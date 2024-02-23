@@ -2,6 +2,11 @@
 
 This project can be used as a starting point to create your own Vaadin application with Spring Boot.
 It contains all the necessary configuration and some placeholder files to get you started.
+## Availabe Todos
+![available.png](available.png)
+
+## Completed Todos
+![completed.png](completed.png)
 
 ## Running the application
 
