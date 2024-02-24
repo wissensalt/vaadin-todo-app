@@ -5,6 +5,7 @@ import static com.vaadin.flow.theme.lumo.LumoUtility.Padding.Horizontal;
 import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.Text;
+import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.checkbox.Checkbox;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
@@ -73,6 +74,7 @@ public class TodoView extends VerticalLayout {
     availableTodoLayout = getTodos(false);
     completedTodoLayout = getTodos(true);
     TabSheet tabSheet = new TabSheet();
+    tabSheet.setMinWidth(50, Unit.PERCENTAGE);
     tabSheet.add("Available", availableTodoLayout);
     tabSheet.add("Completed", completedTodoLayout);
     add(tabSheet);
@@ -95,6 +97,7 @@ public class TodoView extends VerticalLayout {
     }
 
     final VerticalLayout layout = new VerticalLayout();
+    layout.setSizeFull();
     for (HorizontalLayout todoContainer : todoContainers) {
       layout.add(todoContainer);
     }
@@ -123,6 +126,7 @@ public class TodoView extends VerticalLayout {
 
   private TextField getTodoTextField(Todo todo) {
     final TextField textField = new TextField();
+    textField.setWidthFull();
     textField.addKeyPressListener(e -> {
       if (e.getKey().matches(Key.ENTER.toString())) {
         final String oldValue = todo.getTask();
@@ -138,6 +142,8 @@ public class TodoView extends VerticalLayout {
 
   private static HorizontalLayout getTodoContainer() {
     final HorizontalLayout todoContainer = new HorizontalLayout();
+    todoContainer.setSizeFull();
+    todoContainer.setJustifyContentMode(JustifyContentMode.BETWEEN);
     todoContainer.setAlignItems(Alignment.CENTER);
     todoContainer.addClassName(Border.ALL);
     todoContainer.addClassName(BorderColor.PRIMARY);
